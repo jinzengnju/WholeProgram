@@ -1,0 +1,14 @@
+ckpt_dir: D:\graduate\checkpoints
+vocab_dict: D:\graduate\dictionary\vocab.dict
+w2v_model: D:\graduate\word2vec\w2v_model
+lda_model: D:\graduate\LDA\model
+lda_vocab: D:\graduate\LDA\dict
+num_classes: 8387
+max_gradient_norm: 5.0
+batch_size: 1
+num_hidden_units: 256
+embedding_size: 150
+num_layers: 2
+dropout: 0.6
+en_vocab_size: 100000
+pos_weight: 80000

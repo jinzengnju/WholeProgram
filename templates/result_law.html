@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>法条推荐系统</title>
+	<link rel="stylesheet" href="../static/css/common.css"/>
+	<script src="../static/js/jquery.min.js"></script>
+    <style>
+        .asas {font-size: 25px;margin:10px}
+        .asas {font-size: 25px;margin:10px}
+    </style>
+</head>
+<body>
+	<div id="wrapper">
+		<div class="skinBg" style="background-image: url('../static/images/背景.jpg');"></div>
+		<div class="content tc">
+			<br></br>
+			<br></br>
+			<h1 style="font-size: 40px">推荐结果</h1>
+			<br></br>
+		    <ul style="list-style-type:disc">
+		     <li class="asas">{{ first }}</li>
+		     <li class="asas" >{{ second }}</li>
+		     <li class="asas">{{ third }}</li>
+		     <li class="asas">{{ forth }}</li>
+		     <li class="asas">{{ fifth }}</li>
+		     <li class="asas">{{ last }}</li>
+             <li class="asas">{{ 7th }}</li>
+             <li class="asas">{{ 8th }}</li>
+             <li class="asas">{{ 9th }}</li>
+             <li class="asas">{{ 10th }}</li>
+             <li class="asas">{{ 11th }}</li>
+             <li class="asas">{{ 12th }}</li>
+		     </ul>
+		</div>
+	</div>
+	<script src="../static/js/jquery.min.js"></script>
+	<script src="../static/js/jquery.autocomplete.min.js"></script>
+	<script>
+		$('.uname,.topMenus').hover(function(){
+			$('.topMenus').stop(true,true).fadeIn(200);
+		},function(){
+			$('.topMenus').stop(true,true).delay(500).fadeOut(200);
+		});
+		
+		//搜索框自动补全; 
+		$('.searchIpt').AutoComplete({
+            'data': ['About Me', '审美网', 'abcdefg', 'One', 'Two', 'Three', 'Four', 'Five', 'Six','smwell.com', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'],
+            'itemHeight': 24,
+            'width': 529
+        }).AutoComplete('show');
+            
+		$('.ctnerTab a').click(function(){
+			if(!$(this).hasClass('on')){
+				$('.ctnerTab a').removeClass('on').eq($(this).index()).addClass('on');
+				$('.rtNavs').stop(true,true).hide(200).eq($(this).index()).show(300);
+			}
+		});
+		
+		$('.menusWrapper a').click(function(){
+			if(!$(this).hasClass('active')){
+				$('.menusWrapper a').removeClass('active').eq($(this).index()).addClass('active');
+				$('.cbox').stop(true,true).animate({top:318},100).hide().eq($(this).index()).animate({top:0},400).show();
+			}
+		});
+		
+		$('.smallPics a').click(function(){
+			if(!$(this).hasClass('active')){
+				$('.smallPics a').removeClass('active').eq($(this).index()).addClass('active');
+				$('.picLink').stop(true,true).removeClass('active').eq($(this).index()).addClass('active');
+			}
+		});
+				
+		$('.titleT').hover(function(){
+			if(!$(this).hasClass('on')){
+				$('.titleT').removeClass('on').eq($(this).index()).addClass('on');
+				$('.topicB').stop(true,true).hide().eq($(this).index()).show();
+			}
+		});
+	</script>
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>标准法条推荐与类案推荐系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入 Bootstrap -->
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+<style type="text/css">
+	.buttonclass{
+		height: 50px;
+		width:200px;
+	}
+</style>
+</head>
+<body>
+<div class="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <p style="font-size: large;font-weight: bold;color: white">WSSearch</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-center">
+                <h1>标准法条推荐与类案推荐系统</h1>
+                <!--<img src="static/images/zTreeStandard.png" height="97" width="160"/>-->
+                <!-- <p class="logo"><img width="150" height="150" src="D:/WorkFile/lawRecommend/MyGraduate/static/images/logo.png" alt="logo" /></p> -->
+                <p style="height: 20px"></p>
+                <div class="input-group">
+                    <span class="input-group-addon btn-lg join-btn dropdown-toggle" style="font-size: large;font-weight: bolder;height: 300px">案件基本情况</span>
+                    <input type="text" class="form-control input-lg" placeholder="输入案件基本情况" id="searchInput" style="height: 300px">
+                </div>
+                <p style="height: 20px"></p>
+                <!-- 这里要改span标签的class名字 -->
+{#                <a href="/result_law/">#}
+{#                    <button onsubmit="false" type="button" class="input-group-addon btn-lg join-law buttonclass" style="font-size: large;font-weight: bolder;float: left;margin-left: 50px" id="searchBtn1"><p style="margin-top: 6px">法条推荐</p></button>#}
+{#                </a>#}
+
+                <button class="input-group-addon btn-lg join-law buttonclass" style="font-size: large;font-weight: bolder;float: left;margin-left: 50px" id="searchBtn1"><p style="margin-top: 6px">法条推荐</p></button>
+                <!-- <span class="ay_tj buttonclass" style="float: left;margin-left: 50px"> -->
+                <button class="input-group-addon btn-lg join-fact buttonclass" style="float: left;margin-left: 50px;font-size: large;font-weight: bolder" id="searchBtn2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><p style="margin-top: 6px">类案推荐</p></button>
+
+                <!-- </span> -->
+                <p style="height: 300px"></p>
+
+                <div class="dropdown-menu" style="min-width: 700px;border-radius: 0px;padding:2%;top: 50%">
+                        <div class="row" style="margin-bottom: 2%">
+                                <div class="col-sm-6">
+                                    <span>案由：</span><input type="text" id="ay">
+                                </div>
+                                <div class="col-sm-6" ><button id="complexSearch">检索</button></div>
+                        </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+<script src="../static/js/jquery.min.js"></script>
+<!-- 包括所有已编译的插件 -->
+<script src="../static/bootstrap/js/bootstrap.min.js"></script>
+<script src="../static/js/index.js"></script>
+</body>
+</html>
