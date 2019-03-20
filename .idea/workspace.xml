@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="95022223-3fd0-4295-ba5c-6d2ff1586ca1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/content.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/d324f204-c8e0-42d0-9d60-04231a77ae66.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/d324f204-c8e0-42d0-9d60-04231a77ae66.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyGraduate/get_12fact.py" afterPath="$PROJECT_DIR$/MyGraduate/get_12fact.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyGraduate/settings.py" afterPath="$PROJECT_DIR$/MyGraduate/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyGraduate/urls.py" afterPath="$PROJECT_DIR$/MyGraduate/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WenShuModel/models.py" afterPath="$PROJECT_DIR$/WenShuModel/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WenShuModel/urls.py" afterPath="$PROJECT_DIR$/WenShuModel/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WenShuModel/views.py" afterPath="$PROJECT_DIR$/WenShuModel/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/result_fact.html" afterPath="$PROJECT_DIR$/templates/result_fact.html" />
-    </list>
+    <list default="true" id="95022223-3fd0-4295-ba5c-6d2ff1586ca1" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -105,7 +93,7 @@
         <entry file="file://$PROJECT_DIR$/MyGraduate/get_12fact.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="100" column="0" lean-forward="true" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+              <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
               <folding>
                 <element signature="e#25#69#0" expanded="true" />
               </folding>
@@ -116,8 +104,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-385">
-              <caret line="10" column="30" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="10" selection-end-column="30" />
+            <state relative-caret-position="554">
+              <caret line="36" column="11" lean-forward="false" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -127,7 +115,7 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="175">
-              <caret line="5" column="25" lean-forward="true" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+              <caret line="5" column="25" lean-forward="false" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -137,7 +125,7 @@
         <entry file="file://$PROJECT_DIR$/MyGraduate/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="134">
-              <caret line="28" column="43" lean-forward="true" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
+              <caret line="28" column="43" lean-forward="false" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -147,7 +135,7 @@
         <entry file="file://$PROJECT_DIR$/static/js/index_result.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="175">
-              <caret line="5" column="34" lean-forward="true" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+              <caret line="5" column="34" lean-forward="false" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -1100,7 +1088,7 @@
     <entry file="file://$PROJECT_DIR$/MyGraduate/get_12fact.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="100" column="0" lean-forward="true" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+          <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
           <folding>
             <element signature="e#25#69#0" expanded="true" />
           </folding>
@@ -1110,7 +1098,7 @@
     <entry file="file://$PROJECT_DIR$/static/js/index_result.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
-          <caret line="5" column="34" lean-forward="true" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+          <caret line="5" column="34" lean-forward="false" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -1118,7 +1106,7 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
-          <caret line="5" column="25" lean-forward="true" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+          <caret line="5" column="25" lean-forward="false" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -1126,15 +1114,15 @@
     <entry file="file://$PROJECT_DIR$/MyGraduate/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="134">
-          <caret line="28" column="43" lean-forward="true" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
+          <caret line="28" column="43" lean-forward="false" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-385">
-          <caret line="10" column="30" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="10" selection-end-column="30" />
+        <state relative-caret-position="554">
+          <caret line="36" column="11" lean-forward="false" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="11" />
           <folding />
         </state>
       </provider>
