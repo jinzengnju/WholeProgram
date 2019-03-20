@@ -33,11 +33,9 @@ def attention(inputs,attention_size,topic_vector,time_major=False):
     # attention_summary=tf.summary.merge([temp_summary,alphas_summary])
 
 
-    #u_omega维度为bacth*attention_size
+    #u_omega维度为bacth*hidden_size
     u_omega=tf.tensordot(topic_vector,w_omega,axes=1)
     u_omega=tf.reshape(u_omega,[batch_size,-1])
-    #將input的维度用全连接层转为（B，T，attention_size），以便可以与topic_vactor做内乘
-    #v=tf.tanh(temp+b_omega)
     vu=tf.matmul(inputs,tf.expand_dims(u_omega,-1))
     #vu=tf.matmul(v,tf.reshape(u_omega,[batch_size,attention_size,1]))
     vu=tf.reshape(tf.squeeze(vu),[batch_size,-1])

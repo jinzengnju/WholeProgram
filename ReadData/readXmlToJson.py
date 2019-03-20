@@ -2,7 +2,37 @@
 import os
 from lxml import etree
 import json
+import jieba
+import re
 from Model.modelFromCkpt import get_topicVector,LdaModel,Dictionary
+
+def getStopWords(path):
+    fin=open(path,'r',encoding='utf8')
+    stopwords=[]
+    line=fin.readline()
+    while line:
+        line = line.replace("\n", "")
+        if line in stopwords:
+            line=fin.readline()
+            continue
+        stopwords.append(line)
+        line=fin.readline()
+    fin.close()
+    return stopwords
+
+def remove_stopwords(path,str):
+    stopwords=getStopWords(path)
+    text = re.sub('[^(\\u4e00-\\u9fa5)]', '', str)
+    text = re.sub('(?i)[^a-zA-Z0-9\u4E00-\u9FA5]', '', text)
+    res = jieba.cut(text)
+    words=[]
+    for e in res:
+        if len(e)<2:
+            continue
+        if e in stopwords:
+            continue
+        words.append(e)
+    return words
 
 def readOneXml(filename):
     xml_file=etree.parse(filename)
@@ -32,6 +62,17 @@ def readOneXml(filename):
         except ValueError:
             law.append(law_temp)
             continue
+
+    # words=remove_stopwords("D:/fengyi/normalData/stopwords.txt",cmssd)
+    # print(words)
+    # print("查明事实段：")
+    # print(cmssd)
+    # print()
+    # print("案由：")
+    # print(ay)
+    # print()
+    # print("引用法律法条：")
+    # print(law)
     return cmssd,ay,law
 
 def readOneDir(dir_value,foutWith2,foutWith4):
@@ -74,21 +115,22 @@ dictionary = Dictionary.load("D:/LDA/dict")
 lda.__setattr__("minimum_probability", 0)
 
 if __name__=='__main__':
-    dirs = ['a', 'b', 'c', 'd', 'e', 'f']
-    # dirs = ['temp', 'temp1', 'temp2']
-    foutWith2=open("D:/fengyi/sheetWith2.json",'w',encoding='utf8')
-    foutWith4=open("D:/fengyi/sheetWith4.json",'w',encoding='utf8')
-    for dir in dirs:
-        readOneDir(dir,foutWith2,foutWith4)
-    foutWith2.close()
-    foutWith4.close()
-    f_law=open("D:/fengyi/law_and_accu/law.txt",'w',encoding='utf8')
-    f_accu=open("D:/fengyi/law_and_accu/accu.txt",'w',encoding='utf8')
-    for e in law_whole:
-        f_law.write(e)
-        f_law.write('\n')
-    f_law.close()
-    for e in accu_whole:
-        f_accu.write(e)
-        f_accu.write('\n')
-    f_accu.close()
+    # dirs = ['a', 'b', 'c', 'd', 'e', 'f']
+    # # dirs = ['temp', 'temp1', 'temp2']
+    # foutWith2=open("D:/fengyi/sheetWith2.json",'w',encoding='utf8')
+    # foutWith4=open("D:/fengyi/sheetWith4.json",'w',encoding='utf8')
+    # for dir in dirs:
+    #     readOneDir(dir,foutWith2,foutWith4)
+    # foutWith2.close()
+    # foutWith4.close()
+    # f_law=open("D:/fengyi/law_and_accu/law.txt",'w',encoding='utf8')
+    # f_accu=open("D:/fengyi/law_and_accu/accu.txt",'w',encoding='utf8')
+    # for e in law_whole:
+    #     f_law.write(e)
+    #     f_law.write('\n')
+    # f_law.close()
+    # for e in accu_whole:
+    #     f_accu.write(e)
+    #     f_accu.write('\n')
+    # f_accu.close()
+    readOneXml("D:/fengyi/冯奕数据/temp/11389.xml")

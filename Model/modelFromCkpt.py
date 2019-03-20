@@ -7,7 +7,6 @@
 # https://blog.csdn.net/huachao1001/article/details/78501928
 # http://www.voidcn.com/article/p-faybcfqu-bqu.html
 # https://blog.csdn.net/sinat_34474705/article/details/78995196
-import re
 from gensim.models import LdaModel
 from gensim.corpora import Dictionary
 import tensorflow as tf
@@ -17,6 +16,7 @@ import json
 import os
 import yaml
 from gensim.models import Word2Vec
+from Model.get_stopwords import stopwords
 
 tf.app.flags.DEFINE_string("ckpt_dir","checkpoints","Directory to save the model checkpoints")
 tf.app.flags.DEFINE_string("vocab_dict","checkpoints","Directory to save the model checkpoints")
@@ -53,7 +53,13 @@ def get_topicVector(dictionary,batch_context,lda):
         #text=bytes.decode(text)
         text = re.sub('[^(\\u4e00-\\u9fa5)]', '', text)
         text = re.sub('(?i)[^a-zA-Z0-9\u4E00-\u9FA5]', '', text)
-        batch_text.append([word for word in jieba.cut(text) if len(word) > 1])
+        one_text_res = []
+        text_temp = [word for word in jieba.cut(text) if len(word) > 1]
+        for e in text_temp:
+            if e in stopwords:
+                continue
+            one_text_res.append(e)
+        batch_text.append(one_text_res)
     other_corpus = [dictionary.doc2bow(text) for text in batch_text]
     topic_vector=[]
     for temp in other_corpus:

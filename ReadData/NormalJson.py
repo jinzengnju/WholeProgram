@@ -1,5 +1,7 @@
 # -*- coding: UTF-8 -*-
 import json
+from ReadData.DigitToChinese import digitToChinese
+import re
 
 def get_normal_law(path):
     fin=open(path,'r',encoding='utf8')
@@ -22,6 +24,7 @@ def get_normal_accu(path):
     return accu_whole
 
 def getNormaldata_sheet2(inputpath,outputpath):
+    digittool=digitToChinese()
     fin=open(inputpath,'r',encoding='utf8')
     fout=open(outputpath,'w',encoding='utf8')
     line=fin.readline()
@@ -33,8 +36,15 @@ def getNormaldata_sheet2(inputpath,outputpath):
         one_text['fact']=d['fact']
         law_one_text=[]
         for e in d['law']:
-            if e in law_whole:
-                law_one_text.append(e)
+            temp_law=e
+            if re.findall("\d+",temp_law).__len__()!=0:
+                temp_law=digittool.conver_to_chineselaw(temp_law)
+            temp_law=remove_char(temp_law)#去除特殊字符
+            if temp_law in law_whole:
+                law_one_text.append(temp_law)
+        if law_one_text.__len__()==0:
+            line = fin.readline()
+            continue
         one_text['law']=law_one_text
         json.dump(one_text,fout,ensure_ascii=False)
         fout.write('\n')
@@ -43,22 +53,11 @@ def getNormaldata_sheet2(inputpath,outputpath):
     fout.flush()
     fout.close()
 
-def filt_accu():
-    fin=open("D:/fengyi/law_and_accu/accu.txt",'r',encoding='utf8')
-    fout=open("D:/fengyi/law_and_accu/accu_last.txt",'w',encoding='utf8')
-    line=fin.readline()
-    accu=[]
-    while line:
-        line_temp=line.replace("\n","")
-        if line_temp not in accu:
-            accu.append(line_temp)
-        line=fin.readline()
-    for e in accu:
-        fout.write(e)
-        fout.write('\n')
-    fin.close()
-    fout.flush()
-    fout.close()
+def remove_char(str):
+    text = re.sub('[^(\\u4e00-\\u9fa5)]', '', str)
+    text = re.sub('(?i)[^a-zA-Z0-9\u4E00-\u9FA5]', '', text)
+    return text
+
 
 
 def getEditDistance(str1, str2):
@@ -88,6 +87,7 @@ def getEditDistance(str1, str2):
 
 
 def getNormaldata_sheet4(inputpath,outputpath):
+    digittool=digitToChinese()
     fin=open(inputpath,'r',encoding='utf8')
     fout=open(outputpath,'w',encoding='utf8')
     line=fin.readline()
@@ -101,10 +101,16 @@ def getNormaldata_sheet4(inputpath,outputpath):
         one_text['lda_vector']=d['lda_vector']
         law_one_text = []
         for e in d['law']:
-            if e in law_whole:
-                law_one_text.append(e)
+            temp_law = e
+            if re.findall("\d+", temp_law).__len__() != 0:
+                temp_law = digittool.conver_to_chineselaw(temp_law)
+            temp_law = remove_char(temp_law)  # 去除特殊字符
+            if temp_law in law_whole:
+                law_one_text.append(temp_law)
+        if law_one_text.__len__() == 0:
+            line = fin.readline()
+            continue
         one_text['law'] = law_one_text
-
         if d['accu'] in accu_whole:
             one_text['accu']=d['accu']
         else:
@@ -126,5 +132,5 @@ law_whole=get_normal_law("D:/fengyi/law_and_accu/law.txt")
 accu_whole=get_normal_accu("D:/fengyi/law_and_accu/accu.txt")
 
 if __name__=='__main__':
-    #getNormaldata_sheet2("D:/fengyi/sheetWith2.json","D:/fengyi/normalData/sheetWith2.json")
+    # getNormaldata_sheet2("D:/fengyi/sheetWith2.json","D:/fengyi/normalData/sheetWith2.json")
     getNormaldata_sheet4("D:/fengyi/sheetWith4.json","D:/fengyi/normalData/sheetWith4.json")

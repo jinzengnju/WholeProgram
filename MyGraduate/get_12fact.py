@@ -66,7 +66,7 @@ def search_wenshu(request):
     topic_vector = get_topicVector(dictionary, fact, lda)[0]
     db_result=Wenshu.objects.filter(accu=accu)#限制了返回的数据
     length=db_result.count()
-    rand_ids=random.sample(range(1,length),200)
+    rand_ids=random.sample(range(1,length),50)
     similarities={}
     for index in rand_ids:
         var=db_result[index]

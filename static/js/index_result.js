@@ -3,7 +3,7 @@
  */
 $(document).ready(function(){
       $("#1th").click(function(){
-          window.location.href='469.xml';
+          window.location.href='case_content';
       });
 
 
