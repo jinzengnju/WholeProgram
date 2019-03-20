@@ -10,6 +10,12 @@ class Wenshu(models.Model):
     class Meta:
         db_table='wenshu_table'
     wenshu_id=models.CharField(max_length=20)
-    accu=models.CharField(max_length=100)
+    accu=models.CharField(max_length=200)
     law=models.TextField()
     topic_vector=models.TextField()
+
+class Wenshu_Id_Filename(models.Model):
+    class Meta:
+        db_table = 'id_filename'
+    wenshu_id = models.CharField(max_length=20)
+    wenshu_filename=models.CharField(max_length=200)
