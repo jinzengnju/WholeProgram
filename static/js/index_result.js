@@ -2,12 +2,11 @@
  * Created by jin on 2019/2/17.
  */
 $(document).on('click','.asas',function () {
-    var id=$(this).data('id');
-    console.log(id);
+    var id=$(this).attr('id');
     $.ajax({
             type: 'GET',
             cache:'false',
-            url: '/case_content/',
+            url: '/analysis_content/',
             data: {'id':id},
             dataType: 'json',
             async: false,

@@ -7,11 +7,14 @@ from WenShuModel.models import Wenshu,Wenshu_Id_Filename
 from django.http import HttpResponse
 from django.shortcuts import render
 import numpy as np
+from lxml import etree
 import json
 import random
 accu_normal=get_normal_accu("D:/fengyi/law_and_accu/accu.txt")
 class Recommendfact:
+    str_root_path="D:/fengyi/冯奕数据"
     context_wenshu = {}
+    context_content={}
     htmlid_to_wenshuid = {}
     @staticmethod
     def getEditDistance(str1, str2):
@@ -42,6 +45,44 @@ class Recommendfact:
         db_vector=np.array(db_vector_t)
         return -np.sum(input_vector*np.log(db_vector))
 
+    @staticmethod
+    def get_id_ws_filename(similarities_result):
+        cnt = 1
+        for e in similarities_result:
+            wenshu_id = e[0]
+            Recommendfact.htmlid_to_wenshuid[str(cnt) + "th"] = wenshu_id
+            ws_filename = Wenshu_Id_Filename.objects.filter(wenshu_id=wenshu_id)
+            Recommendfact.context_wenshu[str(cnt) + "th"] = ws_filename[0].wenshu_filename
+            cnt += 1
+        return
+
+    @staticmethod
+    def readoneXml(filename):
+        xml_file = etree.parse(filename)
+        node1 = xml_file.xpath("/writ/QW/AJJBQK/CMSSD")
+        cmssd = ""
+        if node1:
+            for e in node1:
+                cmssd += e.get("value")
+        else:
+            cmssd = xml_file.xpath("/writ/QW/AJJBQK")[0].get("value")
+        node2 = xml_file.xpath("/writ/QW/SSJL/AY")
+        ay = node2[0].get("value")
+        law = []
+        node3 = xml_file.xpath("/writ/QW/CPFXGC/CUS_FLFT_FZ_RY/CUS_FLFT_RY")
+        for node in node3:
+            law_temp = node.get("value")
+            law.append(law_temp)
+        law_str = '\n'.join(law)
+        node4 = xml_file.xpath("/writ/QW/CPFXGC")
+        judge_context = ""
+        if node4:
+            judge_context = node4[0].get('value')
+        else:
+            judge_context = "没有找到判决结果"
+        return cmssd, ay, judge_context, law_str
+
+
 def search_wenshu(request):
     message = request.GET.get("fact")
     accu_temp=request.GET.get("accu")
@@ -71,7 +112,7 @@ def search_wenshu(request):
         simi=Recommendfact.cross_entropy(topic_vector,temp_vector)
         similarities[wenshu_id]=simi
     similarities_result=sorted(similarities.items(),key=lambda  x:x[1],reverse=True)
-    get_id_ws_filename(similarities_result)
+    Recommendfact.get_id_ws_filename(similarities_result)
     # context_wenshu['first'] = similarities_result[0][0]    #a1065
     # context_wenshu['second'] = similarities_result[1][0]
     # context_wenshu['third'] = similarities_result[2][0]
@@ -89,29 +130,29 @@ def search_wenshu(request):
     }))
 
 
-def get_id_ws_filename(similarities_result):
-    cnt=1
-    for e in similarities_result:
-        wenshu_id=e[0]
-        Recommendfact.htmlid_to_wenshuid[str(cnt)+"th"]=wenshu_id
-        ws_filename = Wenshu_Id_Filename.objects.filter(wenshu_id=wenshu_id)
-        Recommendfact.context_wenshu[str(cnt)+"th"]=ws_filename[0].wenshu_filename
-        cnt+=1
-    return
+
 
 def get_factresult(request):
     return render(request, 'result_fact.html', Recommendfact.context_wenshu)
 
-
+import os
 
 def get_content(request):
-    context={}
-    context['content']="我来自南京大学"
-    context['ay']="离婚纠纷"
-    context['CaiPanJieGuo']="这是裁判结果"
-    context['law']="这是法条"
-    return render(request,"content.html",context)
+    htmlid = request.GET.get("id")
+    wenshuid=Recommendfact.htmlid_to_wenshuid[htmlid]
+    print("文书的文件名id为：%s***********************"%wenshuid)
+    filename=os.path.join(Recommendfact.str_root_path,wenshuid[0]+'/'+wenshuid[1:]+'.xml')
+    cmssd, ay, judge_context, law_str=Recommendfact.readoneXml(filename)
+    Recommendfact.context_content['content']=cmssd
+    Recommendfact.context_content['ay']=ay
+    Recommendfact.context_content['CaiPanJieGuo']=judge_context
+    Recommendfact.context_content['law']=law_str
+    return HttpResponse(json.dumps({
+        "status": 1
+    }))
 
-if __name__=='__main__':
-    pass
+def show_content(request):
+    return render(request,"content.html",Recommendfact.context_content)
+
+
 
