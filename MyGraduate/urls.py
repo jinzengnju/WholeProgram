@@ -28,7 +28,8 @@ urlpatterns = [
 
     url(r'^resultFactCalculate/$',get_12fact.search_wenshu),
     url(r'^result_fact/$', get_12fact.get_factresult),
-    url(r'^case_content/$', get_12fact.get_content),
+
+    url(r'^result_fact/case_content/$', get_12fact.get_content),
 
 
 ]

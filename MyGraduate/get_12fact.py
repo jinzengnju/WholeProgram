@@ -95,12 +95,11 @@ def get_id_ws_filename(similarities_result):
         wenshu_id=e[0]
         Recommendfact.htmlid_to_wenshuid[str(cnt)+"th"]=wenshu_id
         ws_filename = Wenshu_Id_Filename.objects.filter(wenshu_id=wenshu_id)
-        Recommendfact.context_wenshu[str(cnt)+"th"]=ws_filename['ws_filename']
+        Recommendfact.context_wenshu[str(cnt)+"th"]=ws_filename[0].wenshu_filename
         cnt+=1
     return
 
 def get_factresult(request):
-    print(Recommendfact.context_wenshu)
     return render(request, 'result_fact.html', Recommendfact.context_wenshu)
 
 
@@ -111,7 +110,7 @@ def get_content(request):
     context['ay']="离婚纠纷"
     context['CaiPanJieGuo']="这是裁判结果"
     context['law']="这是法条"
-    return HttpResponse(request,"content.html",context)
+    return render(request,"content.html",context)
 
 if __name__=='__main__':
     pass
