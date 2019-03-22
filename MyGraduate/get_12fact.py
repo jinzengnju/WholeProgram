@@ -73,7 +73,7 @@ class Recommendfact:
         for node in node3:
             law_temp = node.get("value")
             law.append(law_temp)
-        law_str = '\n'.join(law)
+        law_str = '；'.join(law)
         node4 = xml_file.xpath("/writ/QW/CPFXGC")
         judge_context = ""
         if node4:
@@ -144,10 +144,10 @@ def get_content(request):
     filename=os.path.join(Recommendfact.str_root_path,wenshuid[0]+'/'+wenshuid[1:]+'.xml')
     cmssd, ay, judge_context, law_str=Recommendfact.readoneXml(filename)
     Recommendfact.context_content['title']=Recommendfact.context_wenshu[htmlid]
-    Recommendfact.context_content['content']=cmssd
-    Recommendfact.context_content['ay']=ay
-    Recommendfact.context_content['CaiPanJieGuo']=judge_context
-    Recommendfact.context_content['law']=law_str
+    Recommendfact.context_content['content']="查明事实："+cmssd
+    Recommendfact.context_content['ay']="所属案由："+ay
+    Recommendfact.context_content['CaiPanJieGuo']="判决结果："+judge_context
+    Recommendfact.context_content['law']="引用法条："+law_str
     return HttpResponse(json.dumps({
         "status": 1
     }))
