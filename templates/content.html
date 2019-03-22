@@ -1,34 +1,46 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<title>法条推荐系统</title>
-	<link rel="stylesheet" href="../../static/css/common.css"/>
-	<script src="../../static/js/jquery.min.js"></script>
-    <style>
-        .asas {font-size: 25px;margin:10px}
-        .asas {font-size: 25px;margin:10px}
-    </style>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0053)file:///D:/fengyi/%E7%95%8C%E9%9D%A2html/content.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8">
+    <link href="../../static/content_files/User.css" rel="stylesheet" type="text/css">
+    <link href="../../static/content_files/MainIndex.css" rel="stylesheet" type="text/css">
+    <script src="../../static/js/jquery.min.js"></script>
+
 </head>
 <body>
-	<div id="wrapper">
-		<div class="skinBg" style="background-image: url('../../static/images/背景.jpg');"></div>
-		<div class="content tc">
-			<br></br>
-			<br></br>
-			<h1 style="font-size: 40px">推荐结果</h1>
-			<br></br>
-		    <ul style="list-style-type:disc">
-		     <li class="asas" id="1th">{{ content }}</li>
-		     <li class="asas" id="2th">{{ ay }}</li>
-		     <li class="asas" id="3th">{{ CaiPanJieGuo }}</li>
-		     <li class="asas" id="4th">{{ law }}</li>
-            </ul>
-		</div>
-	</div>
-	<script src="../../static/js/jquery.min.js"></script>
-	<script src="../../static/js/jquery.autocomplete.min.js"></script>
-<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+    <div class="main">
+        
+<div id="top" class="top">
+    <!--顶部工具栏-->
+    <!--菜单-->
 </div>
-</body>
-</html>
+
+        <div class="content_main">
+                <div class="div_container">
+                    <div style="height: 25px;">
+                    </div>
+                    <div class="content_tool_left ">
+
+                    </div>
+                    <div style="width: 70%; float: left;">
+                        <div id="divContent" class="div_doc_container">
+                            <div id="Content">
+                                <div id="contentTitle" style="text-align: center; line-height: 25pt; margin: 0.5pt 0cm;
+                                    font-family: 黑体; font-size: 18pt;">{{title}}</div>
+                                <div id="DivContent" style="TEXT-ALIGN: justify; text-justify: inter-ideograph;background-position-x: center;background-repeat-x: no-repeat;">
+                                <div style="LINE-HEIGHT: 25pt;TEXT-ALIGN:justify;TEXT-JUSTIFY:inter-ideograph; TEXT-INDENT: 30pt; MARGIN: 0.5pt 0cm;FONT-FAMILY: 仿宋; FONT-SIZE: 16pt;">{{content}}</div>
+                                <div style="LINE-HEIGHT: 25pt;TEXT-ALIGN:justify;TEXT-JUSTIFY:inter-ideograph; TEXT-INDENT: 30pt; MARGIN: 0.5pt 0cm;FONT-FAMILY: 仿宋; FONT-SIZE: 16pt;">{{ay}}</div>
+                                <div style="LINE-HEIGHT: 25pt;TEXT-ALIGN:justify;TEXT-JUSTIFY:inter-ideograph; TEXT-INDENT: 30pt; MARGIN: 0.5pt 0cm;FONT-FAMILY: 仿宋; FONT-SIZE: 16pt;">{{CaiPanJieGuo}}</div>
+                                <div style="LINE-HEIGHT: 25pt;TEXT-ALIGN:justify;TEXT-JUSTIFY:inter-ideograph; TEXT-INDENT: 30pt; MARGIN: 0.5pt 0cm;FONT-FAMILY: 仿宋; FONT-SIZE: 16pt;">{{law}}</div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="divNotice" class="content_notice">
+                    </div>
+                </div>
+        </div>
+         <div id="bottom" class="bottom">              </div>
+    </div>
+    <script src="../../static/js/jquery.min.js"></script>
+	<script src="../../static/js/jquery.autocomplete.min.js"></script>
+</body></html>

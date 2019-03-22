@@ -1,7 +1,7 @@
 /**
  * Created by jin on 2019/2/17.
  */
-$(document).on('click','.asas',function () {
+$(document).on('click','.dataItem',function () {
     var id=$(this).attr('id');
     $.ajax({
             type: 'GET',

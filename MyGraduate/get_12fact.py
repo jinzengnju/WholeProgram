@@ -13,9 +13,9 @@ import random
 accu_normal=get_normal_accu("D:/fengyi/law_and_accu/accu.txt")
 class Recommendfact:
     str_root_path="D:/fengyi/冯奕数据"
-    context_wenshu = {}
+    context_wenshu = {}#id映射到ws_filename
     context_content={}
-    htmlid_to_wenshuid = {}
+    htmlid_to_wenshuid = {}#id映射到wenshuid
     @staticmethod
     def getEditDistance(str1, str2):
         len_str1 = len(str1) + 1
@@ -143,6 +143,7 @@ def get_content(request):
     print("文书的文件名id为：%s***********************"%wenshuid)
     filename=os.path.join(Recommendfact.str_root_path,wenshuid[0]+'/'+wenshuid[1:]+'.xml')
     cmssd, ay, judge_context, law_str=Recommendfact.readoneXml(filename)
+    Recommendfact.context_content['title']=Recommendfact.context_wenshu[htmlid]
     Recommendfact.context_content['content']=cmssd
     Recommendfact.context_content['ay']=ay
     Recommendfact.context_content['CaiPanJieGuo']=judge_context
